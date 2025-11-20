@@ -1,21 +1,28 @@
 package page;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static data.DataTest.BURGER_URL;
 
 public class MainPage {
-    private WebDriver driver;
-    private By personCabinet = By.xpath("//p[text()='Личный Кабинет']"); // кнопка Личный кабинет
-    private By buttonAccaunt = By.xpath("//button[text()='Войти в аккаунт']");// Кнопка входа в аккаунт
-    private By buttonPlaceOrder = By.xpath("//button[text()='Оформить заказ']");// Кнопка оформить заказ
-    private By buttonBread = By.xpath("//span[text()='Булки']"); //переключатель Булки
-    private By buttonSauce = By.xpath("//span[text()='Соусы']"); //переключатель Соусы
-    private By buttonFilling = By.xpath("//span[text()='Начинки']"); //переключатель Начинки
-    private By objectBread = By.xpath("//img[@alt='Флюоресцентная булка R2-D3']"); //ингредиент Булки
-    private By objectSauce = By.xpath("//img[@alt='Соус Spicy-X']");  //ингредиент Соусы
-    private By objectFilling = By.xpath("//img[@alt='Мясо бессмертных моллюсков Protostomia']"); //ингредиент Начинки
+    private final WebDriver driver;
+    private final By personCabinet = By.xpath("//p[text()='Личный Кабинет']"); // кнопка Личный кабинет
+    private final By buttonAccaunt = By.xpath("//button[text()='Войти в аккаунт']");// Кнопка входа в аккаунт
+    private final By buttonPlaceOrder = By.xpath("//button[text()='Оформить заказ']");// Кнопка оформить заказ
+    private final By buttonBread = By.xpath("//div[contains(@class, 'tab_tab__1SPyG') and .//span[text()='Булки']]"); //переключатель Булки
+    private final By buttonSauce = By.xpath("//div[contains(@class, 'tab_tab__1SPyG') and .//span[text()='Соусы']]"); //переключатель Соусы
+    private final By buttonFilling = By.xpath("//div[contains(@class, 'tab_tab__1SPyG') and .//span[text()='Начинки']]"); //переключатель Начинки
+    private final By objectBread = By.xpath("//div[contains(@class, 'tab_tab__1SPyG') and contains(@class, 'tab_tab_type_current__2BEPc') and .//span[text()='Булки']]"); //ингредиент Булки выделен
+    private final By objectSauce = By.xpath("//div[contains(@class, 'tab_tab__1SPyG') and contains(@class, 'tab_tab_type_current__2BEPc') and .//span[text()='Соусы']]");  //ингредиент Соусы выделен
+    private final By objectFilling = By.xpath("//div[contains(@class, 'tab_tab__1SPyG') and contains(@class, 'tab_tab_type_current__2BEPc') and .//span[text()='Начинки']]"); //ингредиент Начинки выделен
+    private final By logoBurger = By.xpath("//header//div[@class='AppHeader_header__logo__2D0X2']");
 
 
     public MainPage(WebDriver driver) {
@@ -27,49 +34,64 @@ public class MainPage {
         return buttonPlaceOrder;
     }
 
-    // геттер Булка
-    public By getObjectBread() {
-        return objectBread;
-    }
 
-    // геттер Соус
-    public By getObjectSauce() {
-        return objectSauce;
-    }
-
-    // геттер Начинка
-    public By getObjectFilling() {
-        return objectFilling;
-    }
-
-    // Открыть главную страницу
+    @Step("Открыть главную страницу")
     public void openPage() {
         driver.get(BURGER_URL);
     }
 
-    // Нажать на Личный кабинет
+    @Step("Нажать на кнопку Личный кабинет")
     public void inputCabinet() {
         driver.findElement(personCabinet).click();
+
     }
 
-    // Нажать на кнопку Войти в аккаунт
+    @Step("Нажать на кнопку Войти в аккаунт")
     public void clickButtonAccaunt() {
         driver.findElement(buttonAccaunt).click();
     }
 
-    // Нажать на Булки
-    public void clickBread() {
+    @Step("Нажать на Булки")
+    public void clickBread() throws InterruptedException {
         driver.findElement(buttonBread).click();
+        Thread.sleep(1000);  //  увидеть переключение
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(objectBread));
     }
 
-    // Нажать на Соусы
-    public void clickSauce() {
+    @Step("Нажать на Соусы")
+    public void clickSauce() throws InterruptedException {
         driver.findElement(buttonSauce).click();
+        Thread.sleep(1000);  //  увидеть переключение
+         new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(objectSauce));
     }
 
-    // Нажать на Начинки
-    public void clickFilling() {
+    @Step("Нажать на Начинки")
+    public void clickFilling() throws InterruptedException {
         driver.findElement(buttonFilling).click();
+        Thread.sleep(1000);  //  увидеть переключение
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(objectFilling));
+    }
+    @Step("Нажать на Логотип Бургер")
+    public void clicklogoBurger() {
+        driver.findElement(logoBurger).click();
     }
 
+    @Step("Найти веб-элемент начинка")
+    public WebElement findFilling(){
+    WebElement fillingElement = driver.findElement(objectFilling);
+    return fillingElement;//ищем вебэлемент
+    }
+    @Step("Найти веб-элемент соус")
+    public WebElement findSauce(){
+        WebElement sauceElement = driver.findElement(objectSauce);
+        return sauceElement;//ищем вебэлемент
+    }
+    @Step("Найти веб-элемент булка")
+    public WebElement findBread(){
+        WebElement breadElement = driver.findElement(objectBread);
+        return breadElement;//ищем вебэлемент
+    }
 }

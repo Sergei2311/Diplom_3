@@ -5,15 +5,13 @@ import com.github.javafaker.Faker;
 import java.time.Duration;
 
 public class DataTest {
-    public static final String BURGER_URL = "https://stellarburgers.education-services.ru/";
-    public static final String EMAIL_OLD = "SergTester@test.ru";
-    public static final String PASSWORD_OLD = "123456";
+    public static final String BURGER_URL = "https://stellarburgers.education-services.ru";
 
-    static Faker user = new Faker();
+    public static Faker user = new Faker();
     public static final String EMAIL = user.regexify("[a-z]{8}")+"@test.ru";
-    public static final String PASSWORD = user.regexify("[0-9]{4}");
+    public static final String PASSWORD = user.regexify("[0-9]{6}");
     public static final String NAME_REGISTER = user.name().firstName();
 
-    int waitTime = 9;
-    Duration DURATION = Duration.ofSeconds(waitTime);
+    public static final String USER_DELETE = "/api/auth/user";
+    public static final String USER_CREATE = "/api/auth/register";
 }

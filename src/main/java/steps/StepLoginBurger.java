@@ -9,14 +9,13 @@ import page.RegisterPage;
 
 import java.time.Duration;
 
-import static data.DataTest.EMAIL_OLD;
-import static data.DataTest.PASSWORD_OLD;
-
 public class StepLoginBurger {
     MainPage mainPage;
     LoginPage loginPage;
     RegisterPage registerPage;
     WebDriver driver;
+    public String email;
+    public String password;
 
     public StepLoginBurger(MainPage mainPage, LoginPage loginPage, RegisterPage registerPage, WebDriver driver) {
         this.mainPage = mainPage;
@@ -24,9 +23,9 @@ public class StepLoginBurger {
         this.registerPage = registerPage;
         this.driver = driver;
     }
-    public void stepLogin() {
-        loginPage.enterEmail(EMAIL_OLD);
-        loginPage.enterPassword(PASSWORD_OLD);
+    public void stepLogin(String email, String password) {
+        loginPage.enterEmail(email);
+        loginPage.enterPassword(password);
         loginPage.clickButtonInput();
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(mainPage.getButtonPlaceOrder()));
