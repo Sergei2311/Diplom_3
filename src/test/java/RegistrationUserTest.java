@@ -42,5 +42,4 @@ public class RegistrationUserTest extends BaseTest{
         assertTrue("Отображается текст Некорректный пароль - ", driver.findElement(registerPage.getTextIncorrectPassword()).isDisplayed());
     }
 
-
 }

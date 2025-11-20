@@ -14,8 +14,6 @@ public class StepLoginBurger {
     LoginPage loginPage;
     RegisterPage registerPage;
     WebDriver driver;
-    public String email;
-    public String password;
 
     public StepLoginBurger(MainPage mainPage, LoginPage loginPage, RegisterPage registerPage, WebDriver driver) {
         this.mainPage = mainPage;

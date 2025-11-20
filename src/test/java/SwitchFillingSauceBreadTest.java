@@ -1,8 +1,6 @@
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import static junit.framework.TestCase.assertTrue;
 

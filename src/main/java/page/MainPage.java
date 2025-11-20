@@ -22,8 +22,6 @@ public class MainPage {
     private final By objectBread = By.xpath("//div[contains(@class, 'tab_tab__1SPyG') and contains(@class, 'tab_tab_type_current__2BEPc') and .//span[text()='Булки']]"); //ингредиент Булки выделен
     private final By objectSauce = By.xpath("//div[contains(@class, 'tab_tab__1SPyG') and contains(@class, 'tab_tab_type_current__2BEPc') and .//span[text()='Соусы']]");  //ингредиент Соусы выделен
     private final By objectFilling = By.xpath("//div[contains(@class, 'tab_tab__1SPyG') and contains(@class, 'tab_tab_type_current__2BEPc') and .//span[text()='Начинки']]"); //ингредиент Начинки выделен
-    private final By logoBurger = By.xpath("//header//div[@class='AppHeader_header__logo__2D0X2']");
-
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -73,10 +71,6 @@ public class MainPage {
         Thread.sleep(1000);  //  увидеть переключение
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(objectFilling));
-    }
-    @Step("Нажать на Логотип Бургер")
-    public void clicklogoBurger() {
-        driver.findElement(logoBurger).click();
     }
 
     @Step("Найти веб-элемент начинка")

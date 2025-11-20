@@ -2,8 +2,6 @@ package data;
 
 import com.github.javafaker.Faker;
 
-import java.time.Duration;
-
 public class DataTest {
     public static final String BURGER_URL = "https://stellarburgers.education-services.ru";
 
