@@ -27,7 +27,7 @@ public class MainPage {
         this.driver = driver;
     }
 
-    // геттер кнопки Оформить заказ
+    @Step("Кнопка оформить заказ")
     public By getButtonPlaceOrder() {
         return buttonPlaceOrder;
     }
@@ -50,25 +50,22 @@ public class MainPage {
     }
 
     @Step("Нажать на Булки")
-    public void clickBread() throws InterruptedException {
+    public void clickBread(){
         driver.findElement(buttonBread).click();
-        Thread.sleep(1000);  //  увидеть переключение
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(objectBread));
     }
 
     @Step("Нажать на Соусы")
-    public void clickSauce() throws InterruptedException {
+    public void clickSauce() {
         driver.findElement(buttonSauce).click();
-        Thread.sleep(1000);  //  увидеть переключение
          new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(objectSauce));
     }
 
     @Step("Нажать на Начинки")
-    public void clickFilling() throws InterruptedException {
+    public void clickFilling() {
         driver.findElement(buttonFilling).click();
-        Thread.sleep(1000);  //  увидеть переключение
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.visibilityOfElementLocated(objectFilling));
     }

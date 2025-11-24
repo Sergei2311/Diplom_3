@@ -18,10 +18,12 @@ public class RegisterPage {
     private final By textIncorrectPassword = By.xpath("//p[text()='Некорректный пароль']"); //уведомление неправильный пароль
     private final By buttonEnterPageRegister = By.xpath("//a[text()='Войти']"); // кнопка войти
 
+    @Step("Текст Неправильный пароль")
     public By getTextIncorrectPassword() {
         return textIncorrectPassword;
     }
 
+    @Step("Кнопка зарегистрироваться")
     public By getButtonRegister() {
         return buttonRegister;
     }

@@ -9,7 +9,6 @@ import static junit.framework.TestCase.assertTrue;
 public class UserLoginTest extends BaseTest {
 
     @Test
-    @Step("Вход через Личный кабинет")
     @Description("Проверяет переход к форме входа через Личный кабинет и успешную авторизацию")
      public void loginPrivateCabinet() {
         mainPage.openPage();     //открыть главную страницу
@@ -20,7 +19,6 @@ public class UserLoginTest extends BaseTest {
     }
 
     @Test
-    @Step("Вход через восстановление пароля")
     @Description("Проверяет переход к форме входа через ссылку 'Восстановить пароль' и авторизацию")
     public void loginViaPasswordRecovery() {
         mainPage.openPage();     //открыть главную страницу
@@ -35,7 +33,6 @@ public class UserLoginTest extends BaseTest {
     }
 
     @Test
-    @Step("Вход через страницу регистрации")
     @Description("Проверяет переход к форме входа через страницу регистрации и авторизацию")
     public void loginViaRegistrationPage(){
         mainPage.openPage();     //открыть главную страницу
@@ -49,7 +46,6 @@ public class UserLoginTest extends BaseTest {
         assertTrue("Кнопка Оформить заказ отображается - ", driver.findElement(mainPage.getButtonPlaceOrder()).isDisplayed());
     }
     @Test
-    @Step("Вход через кнопку 'Войти в аккаунт'")
     @Description("Проверяет переход к форме входа через кнопку 'Войти в аккаунт' и авторизацию")
     public void loginViaAccountButton() {
         mainPage.openPage();

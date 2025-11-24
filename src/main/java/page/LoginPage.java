@@ -18,10 +18,10 @@ public class LoginPage {
     private final By buttonInput = By.xpath("//button[text()='Войти']"); // кнопка Войти
     private final By buttonPassword = By.xpath("//a[text()='Восстановить пароль']"); //кннопка Восстановить пароль
 
+    @Step("Кнопка войти")
     public By getButtonInput() {
         return buttonInput;
     }
-
     public LoginPage(WebDriver driver) {
         this.driver = driver;
     }

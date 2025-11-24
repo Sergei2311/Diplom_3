@@ -14,7 +14,6 @@ public class RegistrationUserTest extends BaseTest{
 
     @Test
     @Description("Успешная регистрация пользователя")
-    @Step("Успешно зарегистрироваться")
     public void registrationUserTest(){
         mainPage.openPage();     //открыть главную страницу
         stepGoToRegistration.stepGoToRegistration(); // шаг в step - перейти на страницу регистрации
@@ -30,7 +29,6 @@ public class RegistrationUserTest extends BaseTest{
 
     @Test
     @Description("Ввод пользователем некорректного пароля, менее шести символов")
-    @Step("Некорректный ввод пароля")
     public void registerUserBadPasswordTest(){
         mainPage.openPage();     //открыть главную страницу
         stepGoToRegistration.stepGoToRegistration(); // шаг в step - перейти на страницу регистрации

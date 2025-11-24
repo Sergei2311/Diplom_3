@@ -1,5 +1,6 @@
 package steps;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,6 +22,7 @@ public class StepLoginBurger {
         this.registerPage = registerPage;
         this.driver = driver;
     }
+    @Step("Залогиниться")
     public void stepLogin(String email, String password) {
         loginPage.enterEmail(email);
         loginPage.enterPassword(password);
